@@ -5,7 +5,7 @@ class AppTheme{
   static Color Black  =Color(0XFF242424);
   static Color White  =Color.fromARGB(255, 230, 227, 227);
   static ThemeData LightTheme = ThemeData(
-        scaffoldBackgroundColor: PrimaryLight,
+        scaffoldBackgroundColor: Colors.transparent,
         primaryColor: PrimaryLight,
         inputDecorationTheme: InputDecorationTheme(),
         appBarTheme: AppBarTheme(
@@ -17,6 +17,18 @@ class AppTheme{
             color: Colors.black,
             fontFamily: 'El Messiri'
           )
+          ),
+          textTheme: TextTheme(
+            headlineSmall:TextStyle(
+              color: Black,
+              fontSize: 25,
+              fontWeight: FontWeight.w400,
+            ),
+            titleLarge: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
+              color: Black,
+            )
           )
         );
       static ThemeData DarkTheme = ThemeData();
