@@ -16,23 +16,23 @@ class menuScreen extends StatefulWidget {
 
 class _menuScreenState extends State<menuScreen> {
   List <Widget> tabs = [
-    QuraanTab(),
-    HadethTab(),
-    RadioTab(),
-    SebhaTab(), 
-    SettingTab(),
+    const QuraanTab(),
+    const HadethTab(),
+    const RadioTab(),
+    const SebhaTab(), 
+    const SettingTab(),
   ];
   int selectedIndex = 0 ;
   @override
   Widget build(BuildContext context) {
     return Container(
-       decoration: BoxDecoration(
+       decoration: const BoxDecoration(
           image: DecorationImage(image:AssetImage('assets/images/default_bg.png'),
           fit: BoxFit.fill)
         ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('اسلامي'),
+          title: const Text('اسلامي'),
           
         ),
         extendBodyBehindAppBar: true,
