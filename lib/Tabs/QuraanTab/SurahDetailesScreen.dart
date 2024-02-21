@@ -1,8 +1,10 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_application/Tabs/QuraanTab/QuraanTab.dart';
+import 'package:islami_application/Tabs/SettingTab/SettingsProvider.dart';
 import 'package:islami_application/Theme.dart';
 import 'package:islami_application/Widgets/LoadingIndecator.dart';
+import 'package:provider/provider.dart';
 
 class SurahDetailScreen extends StatefulWidget {
   static const String routeName = 'Surah-Detail';
@@ -17,19 +19,23 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
   @override
   Widget build(BuildContext context) {
     SurahScreenArgs args = ModalRoute.of(context)!.settings.arguments as SurahScreenArgs;
-    if(ayat.isEmpty){loadSurahFile(args.index);}
+    if(ayat.isEmpty){
+      loadSurahFile(args.index);
+      }
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(image:AssetImage('assets/images/default_bg.png'),
+          image: DecorationImage(image:AssetImage('assets/images/${Provider.of<SettingProvider>(context).backgroundImagePath}.png'),
           fit: BoxFit.fill)
         ),
         child: Scaffold(
           appBar: AppBar(
           title: Text('اسلامي'),
           ),
-          body: ayat.isEmpty
+          body:
+           ayat.isEmpty
           ?LoadingIndecator()
-          :Container(
+          :
+          Container(
             decoration: BoxDecoration(
               color: AppTheme.White,
               borderRadius: BorderRadius.circular(8.0),
@@ -49,17 +55,12 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
               ),
             ),
           ),
-          
-          
         ));
   }
 
    Future <void> loadSurahFile(int index)async{
     String sura = await rootBundle.loadString('assets/Files/${index + 1}.txt');
     ayat = sura.split('\n');
-    setState(() {
-      
-    });
-    
+    setState(() {});
    }
 }

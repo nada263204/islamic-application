@@ -6,6 +6,8 @@ import 'package:islami_application/Theme.dart';
 import 'package:islami_application/Widgets/LoadingIndecator.dart';
 
 class HadethTab extends StatefulWidget {
+  const HadethTab({super.key});
+
   @override
   State<HadethTab> createState() => _HadethTabState();
 }
@@ -15,16 +17,16 @@ class _HadethTabState extends State<HadethTab> {
 
   @override
   Widget build(BuildContext context) {
-    if(ahadeth.isEmpty){loadAhadethFile();};
+    if(ahadeth.isEmpty){loadAhadethFile();}
     return SafeArea(
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset('assets/images/hadeth_logo.png'),
-            SizedBox(height: 10.0,),
+            const SizedBox(height: 10.0,),
             Container(
               color: AppTheme.PrimaryLight,
-              child: SizedBox(height: 3,width: double.infinity,)
+              child: const SizedBox(height: 3,width: double.infinity,)
               ),
               Row(
                 children: [
@@ -32,20 +34,20 @@ class _HadethTabState extends State<HadethTab> {
                     flex:1,
                     child: Container(
                       alignment: Alignment.center,
-                      child: Text('الاحاديث',
+                      child: const Text('الاحاديث',
                       style: TextStyle(
                         fontFamily: 'El Messiri',
                         fontSize: 25,
                         fontWeight: FontWeight.w600,
-                      ),
+                       ),
                       ),
                     ),
                   ),
-                  
-                ],),
+                ],
+              ),
                 Container(
               color: AppTheme.PrimaryLight,
-              child: SizedBox(height: 3,width: double.infinity,)
+              child: const SizedBox(height: 3,width: double.infinity,)
               ),
             Expanded(
               child:
@@ -53,7 +55,7 @@ class _HadethTabState extends State<HadethTab> {
                ?LoadingIndecator()
                :
                ListView.separated(
-                separatorBuilder:(context,index) => SizedBox(height: 2,) ,
+                separatorBuilder:(context,index) => const SizedBox(height: 2,) ,
                 itemBuilder: (context,index) => Row(
                   children: [
                       Expanded(
@@ -85,7 +87,7 @@ class _HadethTabState extends State<HadethTab> {
     List<String> ahadethStrings = ahadethFileContent.split('#');
     ahadeth = ahadethStrings.map((hadethString) {
       List<String> hadethlines = hadethString.trim().split('\n');
-      String title = hadethlines[0];
+      String title = hadethlines.first;
       hadethlines.removeAt(0);
       List<String> content = hadethlines;
       return Hadeth(content, title);

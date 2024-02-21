@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:islami_application/Tabs/HadethTab/Hadeth.dart';
+import 'package:islami_application/Tabs/SettingTab/SettingsProvider.dart';
 import 'package:islami_application/Theme.dart';
+import 'package:provider/provider.dart';
 
 class HadethDetails extends StatelessWidget {
   static const String routeName = 'hadeth-details';
-  
+
+  const HadethDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
     Hadeth hadeth = ModalRoute.of(context)!.settings.arguments as Hadeth;
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(image:AssetImage('assets/images/default_bg.png'),
+          image: DecorationImage(image:AssetImage('assets/images/${Provider.of<SettingProvider>(context).backgroundImagePath}.png'),
           fit: BoxFit.fill)
         ),
         child: Scaffold(
@@ -38,10 +41,7 @@ class HadethDetails extends StatelessWidget {
               ),
             ),
           ),
-          
-          
-        ))
-        ;
+        )
+      );
+    }
   }
-  }
-  

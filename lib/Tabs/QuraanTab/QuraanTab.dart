@@ -4,7 +4,15 @@ import 'package:flutter/widgets.dart';
 import 'package:islami_application/Tabs/QuraanTab/SurahDetailesScreen.dart';
 import 'package:islami_application/Theme.dart';
 
-class QuraanTab extends StatelessWidget {
+class QuraanTab extends StatefulWidget {
+
+  QuraanTab({super.key});
+
+  @override
+  State<QuraanTab> createState() => _QuraanTabState();
+}
+
+class _QuraanTabState extends State<QuraanTab> {
   List <String> surahsNames = [
     "الفاتحه","البقرة","آل عمران","النساء","المائدة","الأنعام","الأعراف","الأنفال","التوبة","يونس","هود"
             ,"يوسف","الرعد","إبراهيم","الحجر","النحل","الإسراء","الكهف","مريم","طه","الأنبياء","الحج","المؤمنون"
@@ -25,49 +33,56 @@ class QuraanTab extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset('assets/images/qur2an_screen_logo.png'),
-          SizedBox(height: 10.0,),
+          const SizedBox(height: 10.0,),
           Container(
             color: AppTheme.PrimaryLight,
-            child: SizedBox(height: 3,width: double.infinity,)
+            child: const SizedBox(height: 3,width: double.infinity,)
             ),
-            Row(
+             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
                   flex:1,
-                  child: Text('عدد الايات',
-                  style: TextStyle(
-                    fontFamily: 'El Messiri',
-                    fontSize: 25,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  child: Center(
+                    child: Text('عدد الايات',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontFamily: 'El Messiri',fontSize: 25,fontWeight: FontWeight.w600)
+                    // TextStyle(
+                    //   fontFamily: 'El Messiri',
+                    //   fontSize: 25,
+                    //   fontWeight: FontWeight.w600,
+                    // ),
+                    ),
                   ),
                 ),
                 Expanded(
                   flex:1,
-                  child: Text('اسم السوره',
-                  style: TextStyle(
-                    fontFamily: 'El Messiri',
-                    fontSize: 25,
-                    fontWeight: FontWeight.w600,
-                  ),),
+                  child: Center(
+                    child: Text('اسم السوره',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontFamily: 'El Messiri',fontSize: 25,fontWeight: FontWeight.w600)
+                    // TextStyle(
+                    //   fontFamily: 'El Messiri',
+                    //   fontSize: 25,
+                    //   fontWeight: FontWeight.w600,
+                    // ),
+                    ),
+                  ),
                 )
               ],),
               Container(
             color: AppTheme.PrimaryLight,
-            child: SizedBox(height: 3,width: double.infinity,)
+            child: const SizedBox(height: 3,width: double.infinity,)
             ),
           Expanded(
             child: ListView.separated(
-              separatorBuilder:(context,index) => SizedBox(height: 2,) ,
+              separatorBuilder:(context,index) => const SizedBox(height: 2,) ,
               itemBuilder: (context,index) => Row(
                 children: [
                   Expanded(
                       child: Container(
-                        child: Text('286',
-                        style: TextStyle(
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.w400
-                        ),),
+                        child: Center(
+                          child: Text('286',
+                          style: Theme.of(context).textTheme.headlineSmall),
+                        ),
                       ),
                     ),
                     VerticalDivider(
@@ -82,13 +97,12 @@ class QuraanTab extends StatelessWidget {
                           arguments:SurahScreenArgs(index, surahsNames[index])
                           );
                       },
-                      child: Text(surahsNames[index],
-                      style: Theme.of(context).textTheme.headlineSmall,textAlign:TextAlign.right,
+                      child: Center(
+                        child: Text(surahsNames[index],
+                        style: Theme.of(context).textTheme.headlineSmall,textAlign:TextAlign.right,
+                        ),
                       )),
                   ),
-
-                    
-
                 ],
               ),
               itemCount: surahsNames.length,
@@ -98,8 +112,6 @@ class QuraanTab extends StatelessWidget {
       ),
     );
   }
-
- 
 }
 
 class SurahScreenArgs {
